@@ -104,7 +104,7 @@ function displayData() {
 
 
 
-    for (let i = 0 + (pageNumber * 100); i < 100 + (pageNumber * 100); i++) {
+    for (let i = 0 + (pageNumber * 10); i < 10 + (pageNumber * 10); i++) {
         console.log("worked");
         console.log(statesFilter.value);
         //if (recalls[i].state == statesFilter.value) {
@@ -246,9 +246,23 @@ function makeRecallPost(titleParam, stateParam, statusParam, classificationParam
     contentDiv.appendChild(productDescriptionDisplay);
     contentDiv.appendChild(productQuantityDisplay);
     contentDiv.appendChild(recallReasonDisplay);
+
+    if (classificationParam == "Class I") {
+        parentDiv.style.outline = "5px solid #00ff00";
+    }
+
+    else if (classificationParam == "Class II") {
+        parentDiv.style.outline = "5px solid #f2ca25";
+    }
+
+    else if (classificationParam == "Class III") {
+        parentDiv.style.outline  = "5px solid #f24025";
+    }
+
+
 }
 
-// BUTTONS
+// BUTTONS--fetching, setting events and conditionals
 topNextButton = document.getElementById("TopNextButton");
 topPreviousButton = document.getElementById("TopPreviousButton");
 bottomNextButton = document.getElementById("BottomNextButton");
@@ -258,14 +272,14 @@ topNextButton.onclick = nextPage;
 bottomNextButton.onclick = nextPage;
 bottomPreviousButton.onclick = previousPage;
 function nextPage(event) {
-    if ((pageNumber + 1) * 100 <= recalls.length) { // if page number not too high
+    if ((pageNumber + 1) * 10 <= recalls.length) { // if page number not too high
         pageNumber += 1;
         console.log("click registefdsgag");
         displayData();
     }
 }
 function previousPage(event) {
-    if ((pageNumber - 1) * 100 >= 0) {  // if page number is not too low
+    if ((pageNumber - 1) * 10 >= 0) {  // if page number is not too low
         pageNumber -= 1;
         console.log("click previous wokring");
         displayData();
