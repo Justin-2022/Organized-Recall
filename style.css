@@ -46,6 +46,10 @@ body {
     }
     
     #loading {
+        /* Top three fonts for loading screem */
+        font-family: Garamond;
+        /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+        /* font-family: monospace; */
         opacity: 1;
         position: relative;
         top: 400px;
@@ -132,6 +136,20 @@ body {
     
     #label {
         color: white;
+    }
+
+    #page {
+        width: 75px;
+        height: 75px;
+        display: flex;
+        /* position: sticky; */
+        background-color: white;
+        color: black;
+        align-items: center;
+        /* align-content: flex-end; */
+        /* justify-content: flex-end; */
+        margin-left: 75px;
+        justify-content: center;
     }
     
     #footer {

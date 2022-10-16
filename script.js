@@ -247,6 +247,13 @@ function makeRecallPost(titleParam, stateParam, statusParam, classificationParam
     contentDiv.appendChild(productQuantityDisplay);
     contentDiv.appendChild(recallReasonDisplay);
 
+    if (pageNumber >= 0) {
+        let showPageNumber = document.getElementById("page");
+        let pageNumberAmount = document.createElement("p");
+        pageNumberAmount.innerHTML = pageNumber;
+        showPageNumber.innerHTML = "Page: " + pageNumberAmount.innerHTML
+    }
+
     if (classificationParam == "Class I") {
         parentDiv.style.outline = "5px solid #00ff00";
     }
@@ -276,6 +283,7 @@ function nextPage(event) {
         pageNumber += 1;
         console.log("click registefdsgag");
         displayData();
+        document.documentElement.scrollTop = 0
     }
 }
 function previousPage(event) {
@@ -283,6 +291,7 @@ function previousPage(event) {
         pageNumber -= 1;
         console.log("click previous wokring");
         displayData();
+        document.documentElement.scrollTop = 0
     }
 }
 
