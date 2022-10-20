@@ -12,6 +12,9 @@ let form = document.getElementById("states-dropdown");
 let navBar = document.getElementById("navBar");
 let footer = document.getElementById("footer");
 let masterDiv = document.getElementById("allRecallsPosts");
+let showPageNumber = document.getElementById("page");
+let body = document.getElementById("body");
+let topButton = document.getElementById("top-button");
 
 let statesFilter = document.getElementById("states");
 
@@ -31,6 +34,8 @@ bottomNextButton.style.display = "none"
 bottomPreviousButton.style.display = "none"
 navBar.style.display = "none"
 footer.style.display = "none"
+showPageNumber.style.display = "none"
+topButton.style.display = "none";
 
 function callApi() {
     // When filter is set to its default or is loading up for the first time, this url is used to fetch data from the api.
@@ -66,6 +71,8 @@ function callApi() {
                 navBar.style.display = ""
                 footer.style.display = ""
                 masterDiv.style.display = ""
+                showPageNumber.style.display = ""
+                // topButton.style.display = ""
 
                 displayData();
                 skip = 0;
@@ -248,7 +255,6 @@ function makeRecallPost(titleParam, stateParam, statusParam, classificationParam
     contentDiv.appendChild(recallReasonDisplay);
 
     if (pageNumber >= 0) {
-        let showPageNumber = document.getElementById("page");
         let pageNumberAmount = document.createElement("p");
         pageNumberAmount.innerHTML = pageNumber;
         showPageNumber.innerHTML = "Page: " + pageNumberAmount.innerHTML
@@ -265,6 +271,17 @@ function makeRecallPost(titleParam, stateParam, statusParam, classificationParam
     else if (classificationParam == "Class III") {
         parentDiv.style.outline  = "5px solid #f24025";
     }
+
+    window.onscroll = function() {displayTopButton()}
+
+    function displayTopButton() {
+    if (document.body.scrollTop > 135 || document.documentElement.scrollTop > 135) {
+        topButton.style.display = ""
+    }
+    else if (document.body.scrollTop <= 135 || document.documentElement.scrollTop <= 135){
+        topButton.style.display = "none"
+    }
+}
 
 
 }
@@ -294,27 +311,3 @@ function previousPage(event) {
         document.documentElement.scrollTop = 0
     }
 }
-
-
-
-
-
-
-
-
-
-
-// limit = 1000
-// skip = 0
-// skip += 1000
-
-// total = 22756
-// second page: 1000 + 21000 > 22756
-// last page: 1000 + 21000 + ? = // total = 2250
-// limit + skip < total
-// during first page: 1000 + 0 < 2250
-// before second page: 1000 + 10022756 0 < 2250
-// before third page: 1000 + 2000 < 2250
-// Last page: 100 + ? = 2250
-
-// MATH!
